@@ -147,7 +147,12 @@
 					$this->encontrados[] = array("nome" => $arquivo_nome, "link" => $arquivo_link, "texto" => $arquivo_formatado);
 					$ocorrencias = substr_count($arquivo_formatado, $this->palavra_chave);
 					$result_file_find = $result_file_find+$ocorrencias;
-					echo "<p><h1>".$result_file_find."</h1>";
+
+					$marcador = $contador + 1;
+					echo "<p><h1>".$result_file_find." - > $marcador/$total</h1>";					
+					if ($marcador == $total) {
+						echo "<h1>FIM -> $result_file_find</h1>";
+					}
 				}
 				$contador++;
 			}
