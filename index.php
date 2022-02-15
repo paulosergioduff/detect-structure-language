@@ -53,9 +53,7 @@
 	}
 ?>
 	<body>
-		<div id="cabecalho">
-			Criado por Joubert "RedRat" - Centro Universitário UNA - Sistemas de Informação - Estrutura de dados e arquivo
-		</div>
+		
 	<center>
 		<h1 style="font-family: Times New Rowan; font-size: 90px;"><a href="<?php echo URL_RAIZ; ?>" style="text-decoration: none;"> <span style="color: #0040E2;">G</span><span style="color: #D81830;">o</span><span style="color: #FFB400;">ó</span><span style="color: #0040E2;">g</span><span style="color: #0CAC17;">l</span><span style="color: #D81830;">e</span></a></h1>
 		<span>Searcheador de arquivos</span>
@@ -97,7 +95,6 @@
 		}
 	}
 
-	echo "<h1>$result_file_find</h1>";
 	
 	?>
 
