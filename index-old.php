@@ -7,9 +7,9 @@
 	 */
 
 	if(!defined('URL_RAIZ'))
-		define('URL_RAIZ', 'http://' . $_SERVER["HTTP_HOST"] . str_replace ('index.php', '', $_SERVER["PHP_SELF"]));
+		define('URL_RAIZ', 'http://' . $_SERVER["HTTP_HOST"] . str_replace ('index-old.php', '', $_SERVER["PHP_SELF"]));
 	if(!defined('PATH_RAIZ'))
-		define('PATH_RAIZ', str_replace ('index.php', '', $_SERVER["SCRIPT_FILENAME"]));
+		define('PATH_RAIZ', str_replace ('index-old.php', '', $_SERVER["SCRIPT_FILENAME"]));
 	include('Busca.class.php');
 
 	$cabecalho  = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';

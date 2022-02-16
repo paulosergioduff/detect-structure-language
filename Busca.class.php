@@ -27,6 +27,8 @@
 		 */
 		private $extensoes = array('txt', 'html', 'htm', 'log');
 
+		public $ocorrencias;
+
 		/**
 		 * Método construtor da classe, reponsável por apenas instanciar a classe.
 		 */
@@ -149,9 +151,12 @@
 					$result_file_find = $result_file_find+$ocorrencias;
 
 					$marcador = $contador + 1;
-					echo "<p><h1>".$result_file_find." - > $marcador/$total</h1>";					
+					//echo "<p><h1>".$result_file_find." - > $marcador/$total</h1>";					
 					if ($marcador == $total) {
-						echo "<h1>FIM -> $result_file_find</h1>";
+						$this->ocorrencias = $result_file_find;
+						echo "{
+							\"result\": $this->ocorrencias
+						 }";
 					}
 				}
 				$contador++;
