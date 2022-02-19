@@ -4,7 +4,7 @@
 		define('URL_RAIZ', 'http://' . $_SERVER["HTTP_HOST"] . str_replace ('api.php', '', $_SERVER["PHP_SELF"]));
 	if(!defined('PATH_RAIZ'))
 		define('PATH_RAIZ', str_replace ('api.php', '', $_SERVER["SCRIPT_FILENAME"]));
-	include('Busca.class.php');
+	include('busca-ng.class.php');
 
 
 	if(isset($_GET['acao']) && isset($_GET['palavra']) && $_GET['palavra'] != '')
