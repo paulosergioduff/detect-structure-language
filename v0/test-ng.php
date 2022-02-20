@@ -69,8 +69,8 @@ foreach ($listagemDosArquivos as $key => $value) {
     // Montador de sentenças atua
     for ($i=0; $i < $limitDictionary; $i++) {
         $j = $i + 1;
-        $k = $j + 1; 
-        $l = $k + 1; 
+        $k = $i + 2; 
+        $l = $i + 3; 
         $sentenca = "$result[$i] $result[$j] $result[$k] $result[$l]";
         // As sentenças são salvas em um array
         array_push($listaDeSentencas, $sentenca);
@@ -89,7 +89,7 @@ echo "<pre>";
 
 foreach ($listaDeSentencas as $key => $value) {
     echo "<p>$key : $value ===> ";
-    counterInFiles($value);
+    echo "<iframe src='http://localhost/detect-structure-language/v0/api.php?acao=busca&palavra=$value' frameborder='0'></iframe>";
 }
 
 //var_dump($listaDeSentencas);
@@ -107,3 +107,4 @@ counterInFiles($listaDeSentencas[27]);
 
 
 ?>
+
