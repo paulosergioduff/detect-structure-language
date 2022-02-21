@@ -85,7 +85,8 @@ class Busca
         if ($marcador == $total) {
           $this->ocorrencias = $result_file_find;
           echo "{
-                            \"result\": $this->ocorrencias
+                            \"result\": $this->ocorrencias,
+                            \"word\": \"$this->palavra_chave\"
                          }";
         }
       }

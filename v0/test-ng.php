@@ -1,4 +1,4 @@
-<?php //error_reporting(0);
+<?php error_reporting(0);
 
 $palavraChave = $_GET['palavra'];
 
@@ -71,7 +71,7 @@ foreach ($listagemDosArquivos as $key => $value) {
         $j = $i + 1;
         $k = $i + 2; 
         $l = $i + 3; 
-        $sentenca = "$result[$i] $result[$j] $result[$k] $result[$l]";
+        $sentenca = "$result[$i] $result[$j]";
         // As sentenças são salvas em um array
         array_push($listaDeSentencas, $sentenca);
         // Cada sentença detectada é pesquisada e retorna a quantidade
@@ -89,7 +89,7 @@ echo "<pre>";
 
 foreach ($listaDeSentencas as $key => $value) {
     echo "<p>$key : $value ===> ";
-    echo "<iframe src='http://localhost/detect-structure-language/v0/api.php?acao=busca&palavra=$value' frameborder='0'></iframe>";
+    echo "<iframe src='http://localhost/detect-structure-language/v0/api.php?acao=busca&palavra=$value' frameborder='1'></iframe>";
 }
 
 //var_dump($listaDeSentencas);
