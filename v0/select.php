@@ -45,7 +45,7 @@ if( $query->num_rows > 0 ) {//se retornar algum resultado
             if ($row["structure"] == $target) {
                 $sql = "UPDATE snapshot SET ocorrencies=$ocorrencies WHERE id=$idEncontrado";
                 if ($conn->query($sql) === TRUE) {
-                  echo "Record updated successfully";
+                  //echo "Record updated successfully";
                 } else {
                   echo "Error updating record: " . $conn->error;
                 }
