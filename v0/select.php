@@ -6,7 +6,6 @@ $password = "";
 $dbname = "ml_structure";
 
 $getSentence = $_GET['sentence'];
-$getOcorrencies = $_GET['ocorrencies'];
 $familySentence = substr_count($getSentence, " ") + 1;
 
 // Create connection
@@ -16,13 +15,18 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO snapshot (structure, ocorrencies, family)
-VALUES (\"$getSentence\", $getOcorrencies, $familySentence)";
+$mysqli = new mysqli('localhost', 'root', '', 'ml_structure');
 
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
+$user = 'how are dumb';
+$sql = "SELECT * FROM `snapshot` WHERE `structure` = '{$user}'"; //monto a query
+
+
+$query = $mysqli->query( $sql ); //executo a query
+
+if( $query->num_rows > 0 ) {//se retornar algum resultado
+  echo 'Já existe!';
 } else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
+  echo 'Não existe ainda!';
 }
 
 $conn->close();

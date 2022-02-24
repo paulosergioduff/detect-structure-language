@@ -2,6 +2,18 @@
 
 $palavraChave = $_GET['palavra'];
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ml_structure";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
 
 // Esse código trará algum problema de dependência para a arquitetura por compartilhar a constante str_replace
 if(!defined('URL_RAIZ'))
@@ -68,12 +80,28 @@ foreach ($listagemDosArquivos as $key => $value) {
     $limitDictionary = count($result);
     // Montador de sentenças atua
     for ($i=0; $i < $limitDictionary; $i++) {
+
         $j = $i + 1;
         $k = $i + 2; 
         $l = $i + 3; 
         $sentenca = "$result[$i] $result[$j]";
         // As sentenças são salvas em um array
         array_push($listaDeSentencas, $sentenca);
+
+        $getSentence = $sentenca;
+        $getOcorrencies = 1;
+        $familySentence = substr_count($getSentence, " ") + 1;
+
+        $sql = "INSERT INTO snapshot (structure, ocorrencies, family)
+        VALUES (\"$getSentence\", $getOcorrencies, $familySentence)";
+
+        if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+        } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+
         // Cada sentença detectada é pesquisada e retorna a quantidade
         /*$read = file_get_contents("http://localhost/detect-structure-language/v0/api.php?acao=busca&palavra=".$palavraChave);
         $data = json_decode($read);
