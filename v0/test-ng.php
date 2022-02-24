@@ -1,26 +1,13 @@
 <?php error_reporting(0);
 
-$palavraChave = $_GET['palavra'];
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ml_structure";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-
 // Esse código trará algum problema de dependência para a arquitetura por compartilhar a constante str_replace
 if(!defined('URL_RAIZ'))
 define('URL_RAIZ', 'http://' . $_SERVER["HTTP_HOST"] . str_replace ('test-ng.php', '', $_SERVER["PHP_SELF"]));
 if(!defined('PATH_RAIZ'))
 define('PATH_RAIZ', str_replace ('test-ng.php', '', $_SERVER["SCRIPT_FILENAME"]));
 include('busca-ng.class.php');
+
+include ("model/registerSentence.php");
 
 //
 function counterInFiles($word){
@@ -83,24 +70,22 @@ foreach ($listagemDosArquivos as $key => $value) {
 
         $j = $i + 1;
         $k = $i + 2; 
-        $l = $i + 3; 
-        $sentenca = "$result[$i] $result[$j]";
+        $l = $i + 3;
+        $m = $i + 4;
+        $n = $i + 5;
+        $o = $i + 5;
+
+        $sentenca3words = "$result[$i] $result[$j] $result[$k]";
+        $sentenca4words = "$result[$i] $result[$j] $result[$k] $result[$l]";
+        $sentenca5words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m]";
+        $sentenca6words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m] $result[$n]";
+        $sentenca7words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m] $result[$n] $result[$o]";
         // As sentenças são salvas em um array
-        array_push($listaDeSentencas, $sentenca);
-
-        $getSentence = $sentenca;
-        $getOcorrencies = 1;
-        $familySentence = substr_count($getSentence, " ") + 1;
-
-        $sql = "INSERT INTO snapshot (structure, ocorrencies, family)
-        VALUES (\"$getSentence\", $getOcorrencies, $familySentence)";
-
-        if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-        } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-
+        array_push($listaDeSentencas, $sentenca3words);
+        array_push($listaDeSentencas, $sentenca4words);
+        array_push($listaDeSentencas, $sentenca5words);
+        array_push($listaDeSentencas, $sentenca6words);
+        array_push($listaDeSentencas, $sentenca7words);
 
         // Cada sentença detectada é pesquisada e retorna a quantidade
         /*$read = file_get_contents("http://localhost/detect-structure-language/v0/api.php?acao=busca&palavra=".$palavraChave);
@@ -116,8 +101,9 @@ echo "<pre>";
 // A sentença é salva no banco de dados com
 
 foreach ($listaDeSentencas as $key => $value) {
-    echo "<p>$key : $value ===> ";
-    echo "<iframe src='http://localhost/detect-structure-language/v0/api.php?acao=busca&palavra=$value' frameborder='1'></iframe>";
+    echo "<p>$key : $value ";
+    registerNewSentence($value);
+    //echo "<iframe src='http://localhost/detect-structure-language/v0/api.php?acao=busca&palavra=$value' frameborder='1'></iframe>";
 }
 
 //var_dump($listaDeSentencas);
