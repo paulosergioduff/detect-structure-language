@@ -1,0 +1,1 @@
+ALTER TABLE snapshot AUTO_INCREMENT = 1
