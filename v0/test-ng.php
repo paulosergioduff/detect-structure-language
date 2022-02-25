@@ -50,7 +50,7 @@ $listagemDosArquivos = [];
 $listaDeSentencas = [];
 
 $server = "http://localhost/detect-structure-language/v0/";
-$path = "series/";
+$path = "series/friends/";
 $diretorio = dir($path);
 
 while($arquivo = $diretorio -> read()){
@@ -77,15 +77,17 @@ foreach ($listagemDosArquivos as $key => $value) {
 
         $sentenca3words = "$result[$i] $result[$j] $result[$k]";
         $sentenca4words = "$result[$i] $result[$j] $result[$k] $result[$l]";
-        $sentenca5words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m]";
-        $sentenca6words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m] $result[$n]";
-        $sentenca7words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m] $result[$n] $result[$o]";
+        //$sentenca5words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m]";
+        //$sentenca6words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m] $result[$n]";
+        //$sentenca7words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m] $result[$n] $result[$o]";
         // As sentenças são salvas em um array
-        array_push($listaDeSentencas, $sentenca3words);
-        array_push($listaDeSentencas, $sentenca4words);
-        array_push($listaDeSentencas, $sentenca5words);
-        array_push($listaDeSentencas, $sentenca6words);
-        array_push($listaDeSentencas, $sentenca7words);
+        registerNewSentence($result[$i]);
+        //registerNewSentence($sentenca4words);
+        //array_push($listaDeSentencas, $sentenca3words);
+        //array_push($listaDeSentencas, $sentenca4words);
+        //array_push($listaDeSentencas, $sentenca5words);
+        //array_push($listaDeSentencas, $sentenca6words);
+        //array_push($listaDeSentencas, $sentenca7words);
 
         // Cada sentença detectada é pesquisada e retorna a quantidade
         /*$read = file_get_contents("http://localhost/detect-structure-language/v0/api.php?acao=busca&palavra=".$palavraChave);
@@ -96,29 +98,28 @@ foreach ($listagemDosArquivos as $key => $value) {
     }
 }
 
-echo "<pre>";
+
 
 // A sentença é salva no banco de dados com
+/*
+$fimDaLista = count($listaDeSentencas);
 
 foreach ($listaDeSentencas as $key => $value) {
-    echo "<p>$key : $value ";
+   
+    echo "<script>window.document.getElementById(\"status\").innerHTML = '$key / $fimDaLista';</script>";
     registerNewSentence($value);
     //echo "<iframe src='http://localhost/detect-structure-language/v0/api.php?acao=busca&palavra=$value' frameborder='1'></iframe>";
 }
-
+*/
 //var_dump($listaDeSentencas);
-
-echo "</pre>";
-
-counterInFiles($listaDeSentencas[27]);
-
-    
-        
-            
 
 
 
 
 
 ?>
+
+
+
+<div id="status"></div>
 
