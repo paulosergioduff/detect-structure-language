@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $targetname = "root";
-$password = "";
+$password = $_ENV['APP_ENV'];
 $dbname = "ml_structure";
 
 

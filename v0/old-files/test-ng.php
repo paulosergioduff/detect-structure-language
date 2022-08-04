@@ -4,7 +4,7 @@ $palavraChave = $_GET['palavra'];
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = $_ENV['APP_ENV'];
 $dbname = "ml_structure";
 
 // Create connection

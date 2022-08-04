@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "TR4vcijU6T9Keaw";
 $dbname = "ml_structure";
 
 $getSentence = $_GET['sentence'];

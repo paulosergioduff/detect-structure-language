@@ -10,7 +10,7 @@ function registerNewSentence($getSentence){
   ### VERIFICAR POSSIBILIDADE DE INJEÇÃO DE DEPENDÊNCIA ABAIXO
     $servername = "localhost";
     $targetname = "root";
-    $password = "";
+    $password = $_ENV['APP_ENV'];
     $dbname = "ml_structure";
 
 
@@ -22,13 +22,13 @@ function registerNewSentence($getSentence){
       die("Connection failed: " . $conn->connect_error);
     }
 
-    $mysqli = new mysqli('localhost', 'root', '', 'ml_structure');
+    $mysqli = new mysqli('localhost', 'root', 'TR4vcijU6T9Keaw', 'ml_structure');
   ### VERIFICAR POSSIBILIDADE DE INJEÇÃO DE DEPENDÊNCIA ACIMA
 
 
         $familySentence = substr_count($getSentence, " ") + 1;
         $target = $getSentence;
-        $sql = "SELECT * FROM `snapshot` WHERE `structure` = '{$target}'"; //monto a query        
+        $sql = "SELECT * FROM `snapshot` WHERE `structure` = '$target'"; //monto a query        
         $query = $mysqli->query( $sql ); //executo a query
 
         if( $query->num_rows > 0 ) {//se retornar algum resultado
