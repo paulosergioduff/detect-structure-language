@@ -81,8 +81,8 @@ foreach ($listagemDosArquivos as $key => $value) {
         //$sentenca6words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m] $result[$n]";
         //$sentenca7words = "$result[$i] $result[$j] $result[$k] $result[$l] $result[$m] $result[$n] $result[$o]";
         // As sentenças são salvas em um array
-        registerNewSentence($result[$i]);
-        //registerNewSentence($sentenca3words);
+        //registerNewSentence($result[$i]);
+        registerNewSentence($sentenca3words);
         //array_push($listaDeSentencas, $sentenca3words);
         //array_push($listaDeSentencas, $sentenca4words);
         //array_push($listaDeSentencas, $sentenca5words);
