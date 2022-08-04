@@ -50,7 +50,7 @@ $listagemDosArquivos = [];
 $listaDeSentencas = [];
 
 $server = "http://localhost/detect-structure-language/v0/";
-$path = "series/friends/";
+$path = "series/";
 $diretorio = dir($path);
 
 while($arquivo = $diretorio -> read()){

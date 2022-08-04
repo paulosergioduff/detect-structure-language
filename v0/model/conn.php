@@ -14,7 +14,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$mysqli = new mysqli('localhost', 'root', '', 'ml_structure');
+$mysqli = new mysqli('localhost', 'root', $_ENV['APP_ENV'], 'ml_structure');
 
 
 ?>

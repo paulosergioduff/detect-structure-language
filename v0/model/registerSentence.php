@@ -10,7 +10,7 @@ function registerNewSentence($getSentence){
   ### VERIFICAR POSSIBILIDADE DE INJEÇÃO DE DEPENDÊNCIA ABAIXO
     $servername = "localhost";
     $targetname = "root";
-    $password = $_ENV['APP_ENV'];
+    $password = "TR4vcijU6T9Keaw";
     $dbname = "ml_structure";
 
 
